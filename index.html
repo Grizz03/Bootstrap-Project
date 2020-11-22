@@ -14,13 +14,102 @@
         href="node_modules/bootstrap-social/bootstrap-social.css" />
     <link rel="stylesheet"
         href="node_modules/font-awesome/css/font-awesome.min.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+        rel="stylesheet" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Lobster|Open+Sans" />
-        <link rel="stylesheet" href="css/styles.css" />
-    <meta charset="utf-8" />
-    <title>NuCamp: A Better Way To Camp</title> 
-</head>
+      <!--  <link rel="stylesheet" href="css/styles.css" />  -->
+    <meta charset="utf-8" /> 
 
+    <!--Internal CSS, jQuery on bottom for Modal-->
+<style>
+body {
+    font-family: "Montserrat", sans-serif;
+    background-image: url(https://wallpaperaccess.com/full/1251284.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+h1, h2, h3 {
+    font-family: "Lobster", cursive;
+    color: linear-gradient(to right, #7f37dd, #df832e, #dd3c36);
+}
+
+h2 {
+    color: #7f4afa;
+}
+
+header h2 {
+    color: #fc5421;
+}
+
+.site-footer {
+    background-image: linear-gradient(to right, #7f37dd, #df832e, #dd3c36);;
+    padding: 20px 0;
+}
+
+.jumbotron {
+    margin: 0;
+    padding: 3px;
+    background-image: linear-gradient(to right, #7f37dd, #df832e, #dd3c36);;
+    color: white;
+}
+
+.row-content {
+    padding: 50px 0;
+    border-bottom: 1px ridge;
+    min-height: 200px;
+}
+
+.navbar {
+    background-image: linear-gradient(to right, #7f37dd, #df832e, #dd3c36);
+}
+.tab-content {
+    border: 1px solid #DDD;
+    border-top: none;
+    padding: 10px;
+}
+.btn  {
+    background-image: linear-gradient(to left, #7f37dd, #df832e, #dd3c36);
+}
+.btn:hover  {
+    background-image: linear-gradient(to right, #7f37dd, #df832e, #dd3c36);
+}
+.card-header    {
+    background-image: linear-gradient(to right, #7f37dd, #df832e, #dd3c36);
+}
+.fa    {
+    color: black;
+}
+a   {
+    color: #e47535;
+    font-weight: bold;
+}
+a:hover {
+    color: #fa4141;
+}
+.cancel {
+    background-image: gray !important;
+}
+.card-body {
+    background-image: url(https://wallpaperaccess.com/full/1251284.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding-top: 2rem;
+}
+</style>
+
+  <title>NuCamp: A Better Way To Camp</title>
+
+</head>
 <body>
 
     <header class="jumbotron jumbotron-fluid">
@@ -30,17 +119,69 @@
                     <img src="img/logo.png" class="img-fluid" />
                 </div>
                 <div class="col">
-                    <h1>NuCamp</h1>
+                    <h1 style="color: rgb(207, 46, 17);">NuCamp</h1>
                     <h2>A better way to camp</h2>
                 </div>
                 <div class="col-md-4 col-xl-2 mt-4">
-                    <a href="#reserveForm" role="button" class="btn btn-lg btn-info" data-toggle="tooltip" data-placement="bottom" data-html="true" title="Or call us at <br /><strong>1-206-555-1234</strong>">Reserve Campsite</a>
+                    <button type="button" class="btn btn-lg btn-info" data-toggle="modal" data-target="#reserveModal">Reserve Campsite</button>
                 </div>
             </div>
         </div>
     
     </header>
-<!--Nav Bar(will 'collapse' in xs viewport + button to click to expand list)-->
+        <div class="modal modal-lg" id="reserveModal" tabindex="-1" aria-labelledby="reserveModal" aria-hidden="true">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        <h3>Reserver a Campsite</h3>
+                    </div>
+                    <div class="card-body">
+                    <form id="reserveForm">
+                        <div class="row">
+                            <label class="col-sm-6 col-form-label">Number of Campers</label>
+                                <div class="col">
+                                    <select class="form-control" name="numCampers" id="numCampers">
+                                        <option value="">Select...</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    </select>
+                                </div>
+                        </div>
+                            <div class="row col-form-label">
+                                <label class="col-sm-6 col-form-label" for="date">Date</label>
+                                    <div class="col">
+                                        <input class="form-control" type="date" name="date" id="date">
+                                    </div>
+                            </div>
+                            <div class="row col-form-group">
+                                <label class="col-sm-6 col-form-label">Campsite Type</label>
+                                    <div class="col-2 btn-group btn-toggle" data-toggle="buttons">
+                                                <!-- btn-success -->
+                                        <label class="btn btn-md">
+                                            <input type="radio" name="siteType" id="siteTent" value="tent" aria-autocomplete="off">Tent
+                                        </label>
+                                                <!-- btn-primary -->
+                                        <label class="btn btn-md">
+                                            <input type="radio" name="siteType" id="siteRV" value="RV" aria-autocomplete="off">RV
+                                        </label>
+                                    </div>
+                            </div>
+                                <div class="row">
+                                    <div class="col col-form-label">
+                                        <div class="btn-group-horizontal">
+                                            <button class="btn btn-primary cancel" type="submit">Cancel</button>
+                                            <button class="btn btn-primary" type="submit">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
     <nav class="navbar navbar-expand-sm navbar-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#"><img src="img/logo.png"
@@ -122,44 +263,6 @@
     </div>
 </div>
 <br>
-<div class="row row-content align-items-center">
-    <div class="col col-sm-6 mx-auto">
-        <div class="card">
-            <div class="card-header bg-info text-white">
-                <h3>Reserver a Campsite</h3>
-            </div>
-                <div class="card-body">
-                    <form id="reserveForm">
-                        <div class="row">
-                            <label class="col-sm-6 col-form-label">Number of Campers</label>
-                                <div class="col">
-                                    <select class="form-control" name="numCampers" id="numCampers">
-                                        <option value="">Select...</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    </select>
-                                </div>
-                        </div>
-                        <div class="row col-form-label">
-                            <label class="col-sm-6 col-form-label" for="date">Date</label>
-                                <div class="col">
-                                    <input class="form-control" type="date" name="date" id="date">
-                                </div>
-                        </div>
-                            <div class="row">
-                                <div class="col col-form-label">
-                                    <button class="btn btn-primary" type="submit">Search</button>
-                                </div>
-                            </div>
-                    </form>
-                </div>
-        </div>
-    </div>
 </div>
 <footer class="site-footer">
     <div class="container">
@@ -185,9 +288,9 @@
                     class="fa fa-youtube" style="font-size: 2rem"></i></a>
         </div>
         <div class="col-sm-4 text-center">
-            <i class="fa fa-phone fa-lg text-primary"></i>Tel:
+            <i class="fa fa-phone fa-lg text-black"></i>Tel:
             1-206-555-1234<br />
-            <i class="fa fa-envelope fa-lg text-primary"></i>Email:
+            <i class="fa fa-envelope fa-lg text-black"></i>Email:
             campsites@nucamp.co
         </div>
     </div>
@@ -203,11 +306,46 @@
         src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <script>
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
+            $('#reserveModal').on('shown.bs.modal', function () {
+        $('#reserveModal').trigger('focus')
         })
     </script>
+    <script>
 
+
+        // *Working on making buttons disabled if input fields are empty //
+
+
+    /*  
+        $(document).ready(function(){
+        $('.search').attr('disabled',true);
+        $('#date').keyup(function(){
+        if($(this).val().length <= 0)
+            $('.search').attr('disabled', false);            
+        else
+            $('.search').attr('disabled',true);
+        })
+        });  
+    */
+    
+
+        $(document).ready(function(){
+	// By default submit is disabled 
+	$('.search').prop('disabled', true);
+
+	$('#date').keyup(function() {
+
+		if($(this).val().length !=0 ) {			
+			$('.search').prop('disabled', false); 
+		} else {
+			$( "#date").focus();		
+		    $('.search').prop('disabled', true);
+		    e.preventDefault();
+		}
+		
+	});
+});
+    </script>
 </body>
 
 </html>
